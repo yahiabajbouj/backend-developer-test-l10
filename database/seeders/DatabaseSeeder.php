@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $lessons = Lesson::factory()->count(50)->create();
         $this->call([
-            AchievementSeeder::class
+            AchievementSeeder::class,
+            BadgeSeeder::class
         ]);
     }
 }
