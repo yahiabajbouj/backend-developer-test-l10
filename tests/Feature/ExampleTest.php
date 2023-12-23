@@ -36,14 +36,14 @@ class ExampleTest extends TestCase
         $response->assertStatus(200)->assertJson(
             fn (AssertableJson $json) =>
             $json->where('current_badge', 'Master') // because the customer makes all achievements depending on the actions above
-                ->hasAll(['unlocked_achievements', 'next_available_achievements', 'current_badge', 'next_badge', 'remaing_to_unlock_next_badge'])
+                ->hasAll(['unlocked_achievements', 'next_available_achievements', 'current_badge', 'next_badge', 'remaining_to_unlock_next_badge'])
                 ->where('unlocked_achievements', ["First Comment Written","3 Comments Written","5 Comments Written","10 Comments Written","20 Comments Written","First Lesson Watched","5 Lessons Watched","10 Lessons Watched","25 Lessons Watched","50 Lessons Watched"])
                 ->where('next_available_achievements', [])
                 ->etc()
         );
     }
 
-    // in case don't compleat achievements to check [next_available_achievements, next_badge, remaing_to_unlock_next_badge]
+    // in case don't compleat achievements to check [next_available_achievements, next_badge, remaining_to_unlock_next_badge]
     public function test_the_application_returns_a_successful_response_2(): void
     {
         $user = User::factory()->create();
@@ -65,8 +65,8 @@ class ExampleTest extends TestCase
             fn (AssertableJson $json) =>
             $json->where('current_badge', 'Intermediate') // because the customer makes 4 achievements depending on the actions above
                 ->where('next_badge', 'Advanced')
-                ->where('remaing_to_unlock_next_badge', 4) // because the customer need 4 achievements to become Advanced depending on the actions above
-                ->hasAll(['unlocked_achievements', 'next_available_achievements', 'current_badge', 'next_badge', 'remaing_to_unlock_next_badge'])
+                ->where('remaining_to_unlock_next_badge', 4) // because the customer need 4 achievements to become Advanced depending on the actions above
+                ->hasAll(['unlocked_achievements', 'next_available_achievements', 'current_badge', 'next_badge', 'remaining_to_unlock_next_badge'])
                 ->where('unlocked_achievements', ["First Comment Written","3 Comments Written","First Lesson Watched","5 Lessons Watched"])
                 ->where('next_available_achievements', ["5 Comments Written","10 Lessons Watched"])
                 ->etc()

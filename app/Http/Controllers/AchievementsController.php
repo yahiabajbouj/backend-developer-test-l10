@@ -26,7 +26,7 @@ class AchievementsController extends Controller
             'next_available_achievements' => $this->userService->getNextAvailableAchievements($user),
             'current_badge' => $badgeName,
             'next_badge' => $nextBadge->name,
-            'remaing_to_unlock_next_badge' => $nextBadge->achievements_count_needed - $achievementsCount
+            'remaining_to_unlock_next_badge' => $nextBadge->achievements_count_needed - $achievementsCount
         ]);
     }
 }
