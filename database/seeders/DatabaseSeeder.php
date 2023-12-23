@@ -13,8 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $lessons = Lesson::factory()
-            ->count(20)
-            ->create();
+        $lessons = Lesson::factory()->count(50)->create();
+        $this->call([
+            AchievementSeeder::class
+        ]);
     }
 }
